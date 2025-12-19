@@ -1,0 +1,68 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@using RezaMpPersianDatePicker
+<div class="demo-container">
+
+    <header class="demo-header">
+        <h2>Persian DatePicker Demo</h2>
+        <span>Reza Mobaraki Pari</span>
+    </header>
+
+    <div class="demo-body">
+
+        <!-- Settings Panel -->
+        <aside class="settings-panel">
+            <h4>Settings</h4>
+
+            <div class="field">
+                <label>Theme</label>
+                <select @bind="CurrentTheme">
+                    @foreach (var t in Enum.GetValues<DatePickerTheme>())
+                    {
+                        <option value="@t">@t</option>
+                    }
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Size</label>
+                <select @bind="CurrentSize">
+                    @foreach (var s in Enum.GetValues<DatePickerSize>())
+                    {
+                        <option value="@s">@s</option>
+                    }
+                </select>
+            </div>
+
+            <div class="field checkbox">
+                <input type="checkbox" @bind="PopupMode" />
+                <span>Popup Mode</span>
+            </div>
+        </aside>
+
+        <!-- Preview Panel -->
+        <section class="preview-panel">
+            <RmpPersianDatePicker Theme="@CurrentTheme"
+                                  Size="@CurrentSize"
+                                  PopupMode="@PopupMode"
+                                  @bind-="SelectedDate" />
+
+            <div class="result-box">
+                <span>Selected Date</span>
+                <strong>@(SelectedDate ?? "--")</strong>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+@code {
+    private string? SelectedDate;
+
+    private DatePickerTheme CurrentTheme { get; set; } = DatePickerTheme.Metro;
+    private DatePickerSize CurrentSize { get; set; } = DatePickerSize.Medium;
+    private bool PopupMode { get; set; } = true;
+}
+<style>
+
+</style>

@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/demo/">
+    <Project Path="Demo/RmpPersianDatePicker.Sample.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/RezaMpPersianDatePicker.csproj" />
+  </Folder>
+</Solution>
