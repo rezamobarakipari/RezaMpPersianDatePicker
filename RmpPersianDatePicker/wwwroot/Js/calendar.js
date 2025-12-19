@@ -1,63 +1,43 @@
-// wwwroot/js/calendar.js
-window.positionCalendar = (containerRef, calendarRef) => {
-    const container = containerRef;
-    const calendar = calendarRef;
+// wwwroot/js/persianDatePicker.js
 
-    if (!container || !calendar) return;
+window.positionCalendar = function (containerRef, calendarRef) {
+    try {
+        const container = containerRef;
+        const calendar = calendarRef;
 
-    // محاسبه موقعیت
-    const rect = container.getBoundingClientRect();
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
-    const calendarWidth = calendar.offsetWidth;
-    const calendarHeight = calendar.offsetHeight;
+        if (!container || !calendar) return;
 
-    // تنظیم موقعیت اولیه
-    let left = rect.left;
-    let top = rect.bottom + 5;
+        const containerRect = container.getBoundingClientRect();
+        const calendarElement = calendar;
 
-    // بررسی اگر تقویم از سمت راست خارج می‌شود
-    if (left + calendarWidth > viewportWidth - 10) {
-        left = viewportWidth - calendarWidth - 10;
-    }
+        // تنظیمات پایه
+        calendarElement.style.position = 'absolute';
+        calendarElement.style.top = '100%';
+        calendarElement.style.left = '0';
+        calendarElement.style.marginTop = '8px';
+        calendarElement.style.zIndex = '10000';
 
-    // بررسی اگر تقویم از سمت چپ خارج می‌شود
-    if (left < 10) {
-        left = 10;
-    }
+        // بررسی فضای موجود
+        const viewportHeight = window.innerHeight;
+        const calendarHeight = calendarElement.offsetHeight;
 
-    // بررسی اگر تقویم از پایین خارج می‌شود
-    if (top + calendarHeight > viewportHeight - 10) {
-        top = rect.top - calendarHeight - 5;
-
-        // اگر باز هم از بالا خارج شد، نمایش در وسط
-        if (top < 10) {
-            top = 10;
+        // اگر پایین فضای کافی نیست، بالا نمایش بده
+        if ((containerRect.bottom + calendarHeight + 20) > viewportHeight) {
+            calendarElement.style.top = 'auto';
+            calendarElement.style.bottom = '100%';
+            calendarElement.style.marginTop = '0';
+            calendarElement.style.marginBottom = '8px';
         }
-    }
 
-    // اعمال موقعیت
-    calendar.style.left = left + 'px';
-    calendar.style.top = top + 'px';
-    calendar.style.position = 'fixed'; // تغییر به fixed برای اطمینان از موقعیت مطلق
+    } catch (error) {
+        console.error('Error positioning calendar:', error);
+    }
 };
 
-window.addCalendarClickListener = (dotNetRef) => {
-    document.addEventListener('click', function (event) {
-        // بررسی اینکه آیا کلیک خارج از تقویم بوده
-        const calendarElements = document.querySelectorAll(
-            '.persian-date-wrapper, .popup-overlay, .inline-calendar-container, .popup-content, .inline-calendar'
-        );
-
-        let isClickInside = false;
-
-        calendarElements.forEach(element => {
-            if (element && element.contains(event.target)) {
-                isClickInside = true;
-            }
-        });
-
-        if (!isClickInside) {
+window.addCalendarClickListener = function (dotNetRef) {
+    document.addEventListener('click', function (e) {
+        const persianDateWrapper = e.target.closest('.persian-date-wrapper');
+        if (!persianDateWrapper) {
             dotNetRef.invokeMethodAsync('HandleClickOutside');
         }
     });

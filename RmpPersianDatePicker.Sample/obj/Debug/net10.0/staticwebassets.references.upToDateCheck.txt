@@ -18,3 +18,14 @@ F:\MyProjects\RmpPersianDatePicker\RmpPersianDatePicker\obj\Debug\net10.0\static
 F:\MyProjects\RmpPersianDatePicker\RmpPersianDatePicker\obj\Debug\net10.0\staticwebassets.build.json
 F:\MyProjects\RmpPersianDatePicker\RmpPersianDatePicker\obj\Debug\net10.0\staticwebassets.build.json
 F:\MyProjects\RmpPersianDatePicker\RmpPersianDatePicker\obj\Debug\net10.0\staticwebassets.build.json
+F:\MyProjects\RezaMpPersianDatePicker\RmpPersianDatePicker\obj\Debug\net10.0\staticwebassets.build.json
+F:\MyProjects\RezaMpPersianDatePicker\RmpPersianDatePicker\obj\Debug\net10.0\staticwebassets.build.json
+F:\MyProjects\RezaMpPersianDatePicker\RmpPersianDatePicker\obj\Debug\net10.0\staticwebassets.build.json
+F:\MyProjects\RezaMpPersianDatePicker\RmpPersianDatePicker\obj\Debug\net10.0\staticwebassets.build.json
+F:\MyProjects\RezaMpPersianDatePicker\RmpPersianDatePicker\obj\Debug\net10.0\staticwebassets.build.json
+F:\MyProjects\RezaMpPersianDatePicker\RmpPersianDatePicker\obj\Debug\net10.0\staticwebassets.build.json
+F:\MyProjects\RezaMpPersianDatePicker\RmpPersianDatePicker\obj\Debug\net10.0\staticwebassets.build.json
+F:\MyProjects\RezaMpPersianDatePicker\RmpPersianDatePicker\obj\Debug\net10.0\staticwebassets.build.json
+F:\MyProjects\RezaMpPersianDatePicker\RmpPersianDatePicker\obj\Debug\net10.0\staticwebassets.build.json
+F:\MyProjects\RezaMpPersianDatePicker\RmpPersianDatePicker\obj\Debug\net10.0\staticwebassets.build.json
+F:\MyProjects\RezaMpPersianDatePicker\RmpPersianDatePicker\obj\Debug\net10.0\staticwebassets.build.json

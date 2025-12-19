@@ -1,4 +1,12 @@
-﻿h1:focus {
+﻿@font-face {
+    font-family: "iransans";
+    src: url("Fonts/IRANSansWeb.ttf")
+}
+
+.iransans {
+    font-family: "iransans !important";
+}
+h1:focus {
     outline: none;
 }
 

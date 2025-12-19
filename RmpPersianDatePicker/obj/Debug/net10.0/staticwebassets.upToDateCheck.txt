@@ -4,8 +4,8 @@ wwwroot\Css\sizes.css
 wwwroot\Css\themes.css
 wwwroot\exampleJsInterop.js
 wwwroot\Js\calendar.js
-F:\MyProjects\RmpPersianDatePicker\RmpPersianDatePicker\wwwroot\Css\base.css
-F:\MyProjects\RmpPersianDatePicker\RmpPersianDatePicker\wwwroot\Css\sizes.css
-F:\MyProjects\RmpPersianDatePicker\RmpPersianDatePicker\wwwroot\Css\themes.css
-F:\MyProjects\RmpPersianDatePicker\RmpPersianDatePicker\wwwroot\exampleJsInterop.js
-F:\MyProjects\RmpPersianDatePicker\RmpPersianDatePicker\wwwroot\Js\calendar.js
+F:\MyProjects\RezaMpPersianDatePicker\RmpPersianDatePicker\wwwroot\Js\calendar.js
+F:\MyProjects\RezaMpPersianDatePicker\RmpPersianDatePicker\wwwroot\Css\base.css
+F:\MyProjects\RezaMpPersianDatePicker\RmpPersianDatePicker\wwwroot\exampleJsInterop.js
+F:\MyProjects\RezaMpPersianDatePicker\RmpPersianDatePicker\wwwroot\Css\themes.css
+F:\MyProjects\RezaMpPersianDatePicker\RmpPersianDatePicker\wwwroot\Css\sizes.css

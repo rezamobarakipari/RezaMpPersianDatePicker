@@ -12,17 +12,17 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"x2rx4ajns0"},{"Name":"integrity","Value":"sha256-WeOKCkI7IdJHs2kCqsKgLfiWX4/sNPbaRUspOLefkCY="},{"Name":"label","Value":"_content/RezaMpPersianDatePicker/background.png"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"378"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022WeOKCkI7IdJHs2kCqsKgLfiWX4/sNPbaRUspOLefkCY=\u0022"},{"Name":"Last-Modified","Value":"Thu, 18 Dec 2025 18:46:48 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/RezaMpPersianDatePicker/Css/base.972mvcwl60.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Css\base.css'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"972mvcwl60"},{"Name":"integrity","Value":"sha256-pSPt29saJ9N/m355jVkhzPDslob8n0NW/SzyNAMHtFE="},{"Name":"label","Value":"_content/RezaMpPersianDatePicker/Css/base.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"5392"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022pSPt29saJ9N/m355jVkhzPDslob8n0NW/SzyNAMHtFE=\u0022"},{"Name":"Last-Modified","Value":"Thu, 18 Dec 2025 19:12:39 GMT"},{"Name":"Vary","Value":"Accept-Encoding"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/RezaMpPersianDatePicker/Css/base.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Css\base.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-pSPt29saJ9N/m355jVkhzPDslob8n0NW/SzyNAMHtFE="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"5392"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022pSPt29saJ9N/m355jVkhzPDslob8n0NW/SzyNAMHtFE=\u0022"},{"Name":"Last-Modified","Value":"Thu, 18 Dec 2025 19:12:39 GMT"},{"Name":"Vary","Value":"Accept-Encoding"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-y/5NBnmdxByxKCmyGPrbgUZpKLKBAXw5Ue/9TJhCuJc="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"9950"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022y/5NBnmdxByxKCmyGPrbgUZpKLKBAXw5Ue/9TJhCuJc=\u0022"},{"Name":"Last-Modified","Value":"Fri, 19 Dec 2025 15:04:03 GMT"},{"Name":"Vary","Value":"Accept-Encoding"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/RezaMpPersianDatePicker/Css/base.l88uc4i54t.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Css\base.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"l88uc4i54t"},{"Name":"integrity","Value":"sha256-y/5NBnmdxByxKCmyGPrbgUZpKLKBAXw5Ue/9TJhCuJc="},{"Name":"label","Value":"_content/RezaMpPersianDatePicker/Css/base.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"9950"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022y/5NBnmdxByxKCmyGPrbgUZpKLKBAXw5Ue/9TJhCuJc=\u0022"},{"Name":"Last-Modified","Value":"Fri, 19 Dec 2025 15:04:03 GMT"},{"Name":"Vary","Value":"Accept-Encoding"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/RezaMpPersianDatePicker/Css/sizes.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Css\sizes.css'))</AssetFile>
@@ -39,14 +39,14 @@
     <StaticWebAssetEndpoint Include="_content/RezaMpPersianDatePicker/Css/themes.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Css\themes.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-B44mZD0a4aPJJmkvYCt0bD3hbem4G4FwA4l9ngI/bPg="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1309"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022B44mZD0a4aPJJmkvYCt0bD3hbem4G4FwA4l9ngI/bPg=\u0022"},{"Name":"Last-Modified","Value":"Thu, 18 Dec 2025 19:12:39 GMT"},{"Name":"Vary","Value":"Accept-Encoding"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-HE8VDuTgSW3Dv0NUPizc4roM0PQbOxlXErRe2NbW9nk="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2285"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022HE8VDuTgSW3Dv0NUPizc4roM0PQbOxlXErRe2NbW9nk=\u0022"},{"Name":"Last-Modified","Value":"Fri, 19 Dec 2025 14:51:52 GMT"},{"Name":"Vary","Value":"Accept-Encoding"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/RezaMpPersianDatePicker/Css/themes.djo7u3bmwl.css">
+    <StaticWebAssetEndpoint Include="_content/RezaMpPersianDatePicker/Css/themes.kcuhppcimu.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Css\themes.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"djo7u3bmwl"},{"Name":"integrity","Value":"sha256-B44mZD0a4aPJJmkvYCt0bD3hbem4G4FwA4l9ngI/bPg="},{"Name":"label","Value":"_content/RezaMpPersianDatePicker/Css/themes.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1309"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022B44mZD0a4aPJJmkvYCt0bD3hbem4G4FwA4l9ngI/bPg=\u0022"},{"Name":"Last-Modified","Value":"Thu, 18 Dec 2025 19:12:39 GMT"},{"Name":"Vary","Value":"Accept-Encoding"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"kcuhppcimu"},{"Name":"integrity","Value":"sha256-HE8VDuTgSW3Dv0NUPizc4roM0PQbOxlXErRe2NbW9nk="},{"Name":"label","Value":"_content/RezaMpPersianDatePicker/Css/themes.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2285"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022HE8VDuTgSW3Dv0NUPizc4roM0PQbOxlXErRe2NbW9nk=\u0022"},{"Name":"Last-Modified","Value":"Fri, 19 Dec 2025 14:51:52 GMT"},{"Name":"Vary","Value":"Accept-Encoding"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/RezaMpPersianDatePicker/exampleJsInterop.6pqz8bsss0.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\exampleJsInterop.js'))</AssetFile>
@@ -63,14 +63,14 @@
     <StaticWebAssetEndpoint Include="_content/RezaMpPersianDatePicker/Js/calendar.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Js\calendar.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-0oAGxXgOnTINGDDh205Q7J8OFhKR7PV02DFtS4NvlOA="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2199"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u00220oAGxXgOnTINGDDh205Q7J8OFhKR7PV02DFtS4NvlOA=\u0022"},{"Name":"Last-Modified","Value":"Thu, 18 Dec 2025 10:17:06 GMT"},{"Name":"Vary","Value":"Accept-Encoding"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-6x0tgkmS3gThgPMlOTGPp3xYQeJrlJH/n1AfEHDtySs="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1593"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u00226x0tgkmS3gThgPMlOTGPp3xYQeJrlJH/n1AfEHDtySs=\u0022"},{"Name":"Last-Modified","Value":"Fri, 19 Dec 2025 15:04:03 GMT"},{"Name":"Vary","Value":"Accept-Encoding"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/RezaMpPersianDatePicker/Js/calendar.ykess73w1l.js">
+    <StaticWebAssetEndpoint Include="_content/RezaMpPersianDatePicker/Js/calendar.ta9k6o1tz3.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Js\calendar.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ykess73w1l"},{"Name":"integrity","Value":"sha256-0oAGxXgOnTINGDDh205Q7J8OFhKR7PV02DFtS4NvlOA="},{"Name":"label","Value":"_content/RezaMpPersianDatePicker/Js/calendar.js"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2199"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u00220oAGxXgOnTINGDDh205Q7J8OFhKR7PV02DFtS4NvlOA=\u0022"},{"Name":"Last-Modified","Value":"Thu, 18 Dec 2025 10:17:06 GMT"},{"Name":"Vary","Value":"Accept-Encoding"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ta9k6o1tz3"},{"Name":"integrity","Value":"sha256-6x0tgkmS3gThgPMlOTGPp3xYQeJrlJH/n1AfEHDtySs="},{"Name":"label","Value":"_content/RezaMpPersianDatePicker/Js/calendar.js"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1593"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u00226x0tgkmS3gThgPMlOTGPp3xYQeJrlJH/n1AfEHDtySs=\u0022"},{"Name":"Last-Modified","Value":"Fri, 19 Dec 2025 15:04:03 GMT"},{"Name":"Vary","Value":"Accept-Encoding"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/RezaMpPersianDatePicker/RezaMpPersianDatePicker.561exl12ry.bundle.scp.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\RezaMpPersianDatePicker.561exl12ry.bundle.scp.css'))</AssetFile>

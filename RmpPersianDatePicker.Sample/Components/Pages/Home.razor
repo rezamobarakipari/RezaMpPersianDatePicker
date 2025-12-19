@@ -1,52 +1,69 @@
 ﻿@page "/"
 @using RmpPersianDatePicker
 @rendermode InteractiveServer
-<h3>دموی انتخاب تاریخ - رضا مبارکی پری</h3>
 
-<div style="display:flex; gap:40px; align-items:flex-start;">
-    <!-- فرم تنظیمات -->
-    <div style="padding:15px; border-radius:8px; background:#f5f5f5; min-width:220px;">
-        <h4>تنظیمات</h4>
-        <div>
-            <label>Theme</label>
-            <select @bind="CurrentTheme">
-                @foreach (var t in Enum.GetValues<DatePickerTheme>())
-                {
-                    <option value="@t">@t</option>
-                }
-            </select>
-        </div>
-        <div style="margin-top:10px;">
-            <label>Size</label>
-            <select @bind="CurrentSize">
-                @foreach (var s in Enum.GetValues<DatePickerSize>())
-                {
-                    <option value="@s">@s</option>
-                }
-            </select>
-        </div>
-        <div style="margin-top:10px;">
-            <input type="checkbox" @bind="PopupMode" /> <b>Popup Mode</b>
-        </div>
-    </div>
+<div class="demo-container">
 
-    <!-- نمایش DatePicker -->
-    <div>
-        <RmpPersianDatePicker @ref="DatePicker"
-                                  Theme="@CurrentTheme"
+    <header class="demo-header">
+        <h2>Persian DatePicker Demo</h2>
+        <span>Reza Mobaraki Pari</span>
+    </header>
+
+    <div class="demo-body">
+
+        <!-- Settings Panel -->
+        <aside class="settings-panel">
+            <h4>Settings</h4>
+
+            <div class="field">
+                <label>Theme</label>
+                <select @bind="CurrentTheme">
+                    @foreach (var t in Enum.GetValues<DatePickerTheme>())
+                    {
+                        <option value="@t">@t</option>
+                    }
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Size</label>
+                <select @bind="CurrentSize">
+                    @foreach (var s in Enum.GetValues<DatePickerSize>())
+                    {
+                        <option value="@s">@s</option>
+                    }
+                </select>
+            </div>
+
+            <div class="field checkbox">
+                <input type="checkbox" @bind="PopupMode" />
+                <span>Popup Mode</span>
+            </div>
+        </aside>
+
+        <!-- Preview Panel -->
+        <section class="preview-panel">
+            <RmpPersianDatePicker Theme="@CurrentTheme"
                                   Size="@CurrentSize"
                                   PopupMode="@PopupMode"
                                   @bind-Value="SelectedDate" />
-        <p style="margin-top:10px;"><b>مقدار انتخاب شده:</b> @SelectedDate</p>
+
+            <div class="result-box">
+                <span>Selected Date</span>
+                <strong>@(SelectedDate ?? "--")</strong>
+            </div>
+        </section>
+
     </div>
 </div>
 
 @code {
-    private RmpPersianDatePicker? DatePicker;
-
     private string? SelectedDate;
 
     private DatePickerTheme CurrentTheme { get; set; } = DatePickerTheme.Metro;
     private DatePickerSize CurrentSize { get; set; } = DatePickerSize.Medium;
     private bool PopupMode { get; set; } = true;
 }
+<style>
+
+</style>

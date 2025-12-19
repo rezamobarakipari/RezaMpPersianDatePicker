@@ -32,12 +32,12 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>972mvcwl60</Fingerprint>
-      <Integrity>pSPt29saJ9N/m355jVkhzPDslob8n0NW/SzyNAMHtFE=</Integrity>
+      <Fingerprint>l88uc4i54t</Fingerprint>
+      <Integrity>y/5NBnmdxByxKCmyGPrbgUZpKLKBAXw5Ue/9TJhCuJc=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <FileLength>5392</FileLength>
-      <LastWriteTime>Thu, 18 Dec 2025 19:12:39 GMT</LastWriteTime>
+      <FileLength>9950</FileLength>
+      <LastWriteTime>Fri, 19 Dec 2025 15:04:03 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Css\base.css'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Css\sizes.css'))">
@@ -72,12 +72,12 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>djo7u3bmwl</Fingerprint>
-      <Integrity>B44mZD0a4aPJJmkvYCt0bD3hbem4G4FwA4l9ngI/bPg=</Integrity>
+      <Fingerprint>kcuhppcimu</Fingerprint>
+      <Integrity>HE8VDuTgSW3Dv0NUPizc4roM0PQbOxlXErRe2NbW9nk=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <FileLength>1309</FileLength>
-      <LastWriteTime>Thu, 18 Dec 2025 19:12:39 GMT</LastWriteTime>
+      <FileLength>2285</FileLength>
+      <LastWriteTime>Fri, 19 Dec 2025 14:51:52 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Css\themes.css'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\exampleJsInterop.js'))">
@@ -112,12 +112,12 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>ykess73w1l</Fingerprint>
-      <Integrity>0oAGxXgOnTINGDDh205Q7J8OFhKR7PV02DFtS4NvlOA=</Integrity>
+      <Fingerprint>ta9k6o1tz3</Fingerprint>
+      <Integrity>6x0tgkmS3gThgPMlOTGPp3xYQeJrlJH/n1AfEHDtySs=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <FileLength>2199</FileLength>
-      <LastWriteTime>Thu, 18 Dec 2025 10:17:06 GMT</LastWriteTime>
+      <FileLength>1593</FileLength>
+      <LastWriteTime>Fri, 19 Dec 2025 15:04:03 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Js\calendar.js'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\RezaMpPersianDatePicker.561exl12ry.bundle.scp.css'))">

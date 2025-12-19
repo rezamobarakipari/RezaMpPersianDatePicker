@@ -2,15 +2,12 @@
 @using Microsoft.JSInterop
 @using RezaMpPersianDatePicker.PersianDatePickerEnums
 
-
-
-<div class="persian-date-wrapper 
-            @ThemeClass 
-            @SizeClass 
+<div class="persian-date-wrapper
+            @ThemeClass
+            @SizeClass
             @(PopupMode ? "mode-popup" : "mode-inline")"
      @ref="_containerRef">
 
-    <!-- استفاده از input معمولی به جای InputText -->
     <input class="persian-date-input"
            placeholder="@Placeholder"
            value="@DisplayValue"
@@ -22,12 +19,19 @@
     @if (_isOpen && !PopupMode)
     {
         <div class="inline-calendar-container" @ref="_calendarRef">
-            <div class="inline-calendar">
-                @RenderCalendar()
-            </div>
+            @RenderCalendar()
         </div>
     }
 </div>
+
+@if (_isOpen && PopupMode)
+{
+    <div class="popup-overlay" @onclick="Close">
+        <div class="popup-content" @onclick:stopPropagation>
+            @RenderCalendar()
+        </div>
+    </div>
+}
 
 @if (_isOpen && PopupMode)
 {
@@ -328,10 +332,10 @@
             _isOpen = true;
             await InvokeAsync(StateHasChanged);
 
-            // کمی تاخیر برای position دادن
             if (!PopupMode)
             {
-                await Task.Delay(50);
+                // تاخیر بیشتر برای اطمینان از رندر شدن کامل
+                await Task.Delay(100);
                 await PositionInlineCalendar();
             }
         }
@@ -347,21 +351,16 @@
             if (JS != null)
             {
                 // کمی تاخیر برای رندر شدن کامل
-                await Task.Delay(10);
+                await Task.Delay(100); // افزایش تاخیر برای اطمینان از رندر
                 await JS.InvokeVoidAsync("positionCalendar", _containerRef, _calendarRef);
             }
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Error positioning calendar: {ex.Message}");
-            // در صورت خطا، موقعیت پیش‌فرض
-            if (_calendarRef.Context != null)
-            {
-                // اعمال موقعیت ساده
-            }
+            // در صورت خطا، از CSS برای موقعیت پیش‌فرض استفاده می‌شود
         }
     }
-
     public void PrevMonth()
     {
         if (_month == 1)
