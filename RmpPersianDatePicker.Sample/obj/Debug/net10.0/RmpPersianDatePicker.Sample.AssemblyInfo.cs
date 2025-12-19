@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RmpPersianDatePicker.Sample")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7a7bf23ccf5f2b21c12833b7d6372723401b135f")]
 [assembly: System.Reflection.AssemblyProductAttribute("RmpPersianDatePicker.Sample")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RmpPersianDatePicker.Sample")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
