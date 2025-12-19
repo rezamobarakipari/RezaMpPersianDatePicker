@@ -1,4 +1,4 @@
-<img width="1454" height="832" alt="image" src="https://github.com/user-attachments/assets/bf8bdd3b-c5f7-4943-82bb-f39c8f5bf466" />﻿# RezaMpPersianDatePicker 🇮🇷
+# RezaMpPersianDatePicker 🇮🇷
 
 A lightweight, customizable Persian (Shamsi / Jalali) DatePicker component for **Blazor**  
 with **Theme**, **Size**, and **Popup / Inline** modes.
