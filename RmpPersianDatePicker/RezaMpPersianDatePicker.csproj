@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+
+		<!-- اطلاعات پکیج -->
+		<PackageId>RezaMpPersianDatePicker</PackageId>
+		<Version>1.0.0</Version>
+		<Authors>رضا مبارکی پری</Authors>
+		<Description>تقویم فارسی برای Blazor</Description>
+		<PackageTags>blazor, persian, calendar, jalali</PackageTags>
+	</PropertyGroup>
+
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+	  
+  </ItemGroup>
+	
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.1" />
+  </ItemGroup>
+
+</Project>

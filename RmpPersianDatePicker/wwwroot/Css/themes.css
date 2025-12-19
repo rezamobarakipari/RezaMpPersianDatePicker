@@ -1,0 +1,55 @@
+﻿/* ==================== Persian Date Picker – Themes ==================== */
+
+/* ===== Metro (Default) ===== */
+.theme-metro {
+    --primary: #8E44AD;
+    --primary-light: #9B59B6;
+    --primary-soft: #f3e8ff;
+    --today: #3498db;
+    --today-dark: #2980b9;
+    --success: #27ae60;
+    --success-light: #2ecc71;
+    --text-main: #333;
+    --text-muted: #999;
+    --border-light: #e0e0e0;
+    --border-soft: #f0f0f0;
+    --bg-main: #ffffff;
+    --bg-soft: #f9f9f9;
+    
+}
+
+/* ===== Dark ===== */
+.theme-dark {
+    --primary: #9B59B6;
+    --primary-light: #b084f7;
+    --primary-soft: #3a4042;
+    --today: #2980b9;
+    --today-dark: #1f6391;
+    --success: #2ecc71;
+    --success-light: #58d68d;
+    --text-main: #ffffff;
+    --text-muted: #bbbbbb;
+    --border-light: #444;
+    --border-soft: #555;
+    --bg-main: #2d3436;
+    --bg-soft: #222831;
+   
+}
+
+/* ===== Minimal ===== */
+.theme-minimal {
+    --primary: #666666;
+    --primary-light: #888888;
+    --primary-soft: #f2f2f2;
+     --today: #444444;
+    --today-dark: #222222;
+    --success: #666666;
+    --success-light: #888888;
+    --text-main: #333333;
+    --text-muted: #777777;
+    --border-light: #dddddd;
+    --border-soft: #eeeeee;
+    --bg-main: #ffffff;
+    --bg-soft: #fafafa;
+   
+}

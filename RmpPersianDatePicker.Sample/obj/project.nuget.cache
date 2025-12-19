@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "fAj86N5qJ/w=",
+  "success": true,
+  "projectFilePath": "F:\\MyProjects\\RmpPersianDatePicker\\RmpPersianDatePicker.Sample\\RmpPersianDatePicker.Sample.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Reza.mobaraki\\.nuget\\packages\\microsoft.aspnetcore.app.internal.assets\\10.0.1\\microsoft.aspnetcore.app.internal.assets.10.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
