@@ -48,3 +48,4 @@ F:\MyProjects\RezaMpPersianDatePicker\Demo\RezaMpPersianDatePicker.Demo\obj\Debu
 F:\MyProjects\RezaMpPersianDatePicker\Demo\RezaMpPersianDatePicker.Demo\obj\Debug\net8.0\RezaMpPersianDatePicker.Demo.pdb
 F:\MyProjects\RezaMpPersianDatePicker\Demo\RezaMpPersianDatePicker.Demo\obj\Debug\net8.0\RezaMpPersianDatePicker.Demo.genruntimeconfig.cache
 F:\MyProjects\RezaMpPersianDatePicker\Demo\RezaMpPersianDatePicker.Demo\obj\Debug\net8.0\ref\RezaMpPersianDatePicker.Demo.dll
+F:\MyProjects\RezaMpPersianDatePicker\Demo\RezaMpPersianDatePicker.Demo\obj\Debug\net8.0\RezaMpPersianDatePicker.Demo.sourcelink.json

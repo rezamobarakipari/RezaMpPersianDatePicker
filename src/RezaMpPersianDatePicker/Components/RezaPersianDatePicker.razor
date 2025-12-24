@@ -12,7 +12,7 @@
 }
 else
 {
-    <div class="persian-date-wrapper @(_isOpen && !PopupMode ? "calendar-open" : "")" @ref="_containerRef">
+    <div class="persian-date-wrapper  @ThemeClass @SizeClass" @(_isOpen && !PopupMode ? "calendar-open" : "" )" @ref="_containerRef">
       <input class="persian-date-input"
            placeholder="@Placeholder"
            @bind-value=@DisplayValue"
@@ -37,7 +37,7 @@ else
     @if (_isOpen && PopupMode)
     {
         <!-- حالت پاپ‌آپ -->
-        <div class="popup-overlay" @onclick="Close">
+        <div class="popup-overlay  @ThemeClass @SizeClass" @onclick="Close">
             <div class="popup-content" @onclick:stopPropagation>
                 @RenderCalendar()
             </div>
@@ -54,7 +54,21 @@ else
     [Parameter] public bool ShowSimple { get; set; } = true;
     [Inject] private IJSRuntime? JSRuntime { get; set; }
 
-    protected string ThemeClass => $"theme-{Theme.ToString().ToLower()}";
+    protected string ThemeClass => Theme switch
+    {
+        DatePickerTheme.Metro => "theme-metro",
+        DatePickerTheme.Classic => "theme-classic",
+        DatePickerTheme.Modern => "theme-modern",
+        DatePickerTheme.Dark => "theme-dark",
+        DatePickerTheme.Blue => "theme-blue",
+        DatePickerTheme.Coral => "theme-coral",
+        DatePickerTheme.Forest => "theme-forest",
+        DatePickerTheme.Amber => "theme-amber",
+        DatePickerTheme.DeepOcean => "theme-deep-ocean",
+        DatePickerTheme.Royal => "theme-royal",
+        DatePickerTheme.Minimal => "theme-minimal",
+        _ => "theme-metro"
+    };
     protected string SizeClass => Size switch
     {
         DatePickerSize.Compact => "compact-date",

@@ -30,3 +30,4 @@ F:\MyProjects\RezaMpPersianDatePicker\src\RezaMpPersianDatePicker\obj\Debug\net8
 F:\MyProjects\RezaMpPersianDatePicker\src\RezaMpPersianDatePicker\obj\Debug\net8.0\refint\RezaMpPersianDatePicker.dll
 F:\MyProjects\RezaMpPersianDatePicker\src\RezaMpPersianDatePicker\obj\Debug\net8.0\RezaMpPersianDatePicker.pdb
 F:\MyProjects\RezaMpPersianDatePicker\src\RezaMpPersianDatePicker\obj\Debug\net8.0\ref\RezaMpPersianDatePicker.dll
+F:\MyProjects\RezaMpPersianDatePicker\src\RezaMpPersianDatePicker\obj\Debug\net8.0\RezaMpPersianDatePicker.sourcelink.json

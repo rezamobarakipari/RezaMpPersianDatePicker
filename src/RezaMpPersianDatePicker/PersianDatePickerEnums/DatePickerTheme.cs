@@ -2,9 +2,15 @@
 
 public enum DatePickerTheme
 {
-    Metro,      // پیش‌فرض
-    Classic,    // کلاسیک
-    Modern,     // مدرن
-    Dark,       // تاریک
-    Blue        // آبی
+    Metro,        // theme-metro (پیش‌فرض)
+    Classic,      // theme-classic
+    Modern,       // theme-modern
+    Dark,         // theme-dark
+    Blue,         // theme-blue
+    Coral,        // theme-coral
+    Forest,       // theme-forest
+    Amber,        // theme-amber
+    DeepOcean,    // theme-deep-ocean
+    Royal,        // theme-royal
+    Minimal       // theme-minimal
 }
