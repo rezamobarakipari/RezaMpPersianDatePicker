@@ -1,0 +1,859 @@
+﻿
+/* ==================== Persian Date Picker – Base CSS ==================== */
+/* این فایل شامل 100٪ CSS اصلی شماست، فقط رنگ‌ها variable-based شده‌اند */
+
+:root {
+    --primary: #8E44AD;
+    --primary-light: #9B59B6;
+    --primary-soft: #f3e8ff;
+    --today: #3498db;
+    --today-dark: #2980b9;
+    --success: #27ae60;
+    --success-light: #2ecc71;
+    --text-main: #333;
+    --text-muted: #999;
+    --border-light: #e0e0e0;
+    --border-soft: #f0f0f0;
+    --bg-main: #ffffff;
+    --bg-soft: #f9f9f9;
+}
+
+/* ==================== Persian Date Picker - Metro Style ==================== */
+
+/* Container اصلی */
+.persian-date-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* Input استایل مترونیک */
+.persian-date-input {
+    width: 100%;
+    padding: 8px 45px 8px 8px;
+    border: 2px solid var(--border-light);
+    border-radius: 8px;
+    font-size: 12px;
+    font-family: iransans;
+    background: var(--bg-main);
+    color: var(--text-main);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    direction: rtl;
+    text-align: right;
+}
+
+    .persian-date-input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 20%, transparent);
+    }
+
+    .persian-date-input::placeholder {
+        color: var(--text-muted);
+        opacity: 1;
+    }
+
+/* Calendar Icon Inside Input */
+.persian-date-wrapper .calendar-icon {
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px color-mix(in srgb, var(--primary) 30%, transparent);
+    z-index: 2;
+    font-size: 16px;
+}
+
+    .persian-date-wrapper .calendar-icon:hover {
+        background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+        transform: translateY(-50%) scale(1.05);
+        box-shadow: 0 3px 6px color-mix(in srgb, var(--primary) 40%, transparent);
+    }
+
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    backdrop-filter: blur(3px);
+    animation: fadeIn 0.2s ease-out;
+}
+
+/* تقویم در حالت popup باید z-index بالاتری داشته باشد */
+.popup-content {
+    position: relative;
+    z-index: 100000;
+    background: linear-gradient(to bottom, var(--bg-main), var(--bg-soft));
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    min-width: 320px;
+    max-width: 380px;
+    border: 1px solid var(--border-soft);
+    animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Header (Year/Month Selector) */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--border-soft);
+    background: linear-gradient(to right, var(--primary), var(--primary-light));
+    padding: 15px;
+    border-radius: 12px 12px 0 0;
+    margin: -25px -25px 20px -25px;
+}
+
+.calendar-nav-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+
+    .calendar-nav-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+    }
+
+/* Dropdown استایل */
+.calendar-header select {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 110px;
+    text-align: center;
+    font-family: iransans;
+}
+
+    .calendar-header select:focus {
+        outline: none;
+        border-color: white;
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
+    }
+
+/* Calendar Table */
+.calendar-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 5px;
+    margin: 0 0 20px 0;
+}
+
+    .calendar-table thead th {
+        color: var(--primary);
+        padding: 12px 0;
+        font-size: 14px;
+        font-weight: 700;
+        text-align: center;
+        background: color-mix(in srgb, var(--primary-soft) 90%, transparent);
+        border-radius: 8px;
+    }
+
+    .calendar-table tbody td {
+        padding: 12px 0;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        font-weight: 500;
+        color: var(--text-main);
+        border-radius: 10px;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .calendar-table tbody td:not(.empty):hover {
+            background: linear-gradient(135deg, var(--primary-soft) 0%, color-mix(in srgb, var(--primary-soft) 80%, white) 100%);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px color-mix(in srgb, var(--primary) 20%, transparent);
+        }
+
+        .calendar-table tbody td.selected {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            font-weight: 700;
+            box-shadow: 0 4px 15px color-mix(in srgb, var(--primary) 40%, transparent);
+            position: relative;
+        }
+
+            .calendar-table tbody td.selected::after {
+                content: '✓';
+                position: absolute;
+                top: 2px;
+                right: 2px;
+                font-size: 10px;
+            }
+
+        .calendar-table tbody td.empty {
+            background: transparent;
+            cursor: default;
+            color: var(--border-light);
+        }
+
+        /* امروز Highlight */
+        .calendar-table tbody td.today {
+            background: linear-gradient(135deg, var(--today) 0%, var(--today-dark) 100%);
+            color: white;
+            font-weight: 700;
+        }
+
+/* Footer Buttons */
+.calendar-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 10px;
+    padding-top: 15px;
+    border-top: 2px solid var(--border-soft);
+}
+
+.calendar-btn {
+    flex: 1;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    font-family: iransans;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+    .calendar-btn.confirm {
+        background: linear-gradient(135deg, var(--success) 0%, var(--success-light) 100%);
+        color: white;
+        box-shadow: 0 4px 15px color-mix(in srgb, var(--success-light) 30%, transparent);
+    }
+
+        .calendar-btn.confirm:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px color-mix(in srgb, var(--success-light) 40%, transparent);
+            background: linear-gradient(135deg, var(--success-light) 0%, var(--success) 100%);
+        }
+
+    .calendar-btn.cancel {
+        background: var(--bg-soft);
+        color: var(--text-muted);
+        border: 2px solid var(--border-soft);
+    }
+
+        .calendar-btn.cancel:hover {
+            background: color-mix(in srgb, var(--bg-soft) 90%, var(--border-soft));
+            transform: translateY(-2px);
+            border-color: var(--border-light);
+        }
+
+    .calendar-btn.today {
+        background: linear-gradient(135deg, var(--today) 0%, var(--today-dark) 100%);
+        color: white;
+        box-shadow: 0 4px 15px color-mix(in srgb, var(--today) 30%, transparent);
+    }
+
+        .calendar-btn.today:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px color-mix(in srgb, var(--today) 40%, transparent);
+            background: linear-gradient(135deg, var(--today-dark) 0%, var(--today) 100%);
+        }
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .popup-content {
+        min-width: 280px;
+        padding: 20px;
+        margin: 10px;
+    }
+
+    .calendar-header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+        .calendar-header select {
+            min-width: 100px;
+        }
+
+    .calendar-footer {
+        flex-wrap: wrap;
+    }
+
+    .calendar-btn {
+        min-width: 80px;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .persian-date-input {
+        background: var(--bg-main);
+        border-color: var(--border-light);
+        color: var(--text-main);
+    }
+
+    .popup-content {
+        background: linear-gradient(to bottom, var(--bg-main), var(--bg-soft));
+        border-color: var(--border-light);
+    }
+
+    .calendar-table thead th {
+        background: color-mix(in srgb, var(--primary-soft) 20%, var(--bg-main));
+        color: var(--text-main);
+    }
+
+    .calendar-table tbody td:not(.empty):hover {
+        background: color-mix(in srgb, var(--primary-soft) 20%, var(--bg-main));
+        color: var(--primary-light);
+    }
+
+    .calendar-btn.cancel {
+        background: var(--bg-soft);
+        color: var(--text-muted);
+        border-color: var(--border-light);
+    }
+}
+/* ==================== حالت Inline Calendar (بازشونده کنار) ==================== */
+
+.persian-date-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* Container تقویم inline جمع و جور */
+.inline-calendar-container {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    z-index: 10000;
+    min-width: 280px; /* کاهش عرض */
+    max-width: 320px; /* محدود کردن عرض */
+    animation: slideDown 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.inline-calendar {
+    background: var(--bg-main);
+    padding: 15px; /* کاهش padding */
+    border-radius: 10px; /* کاهش شعاع */
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15); /* سایه سبکتر */
+    border: 2px solid var(--primary);
+    width: 100%;
+    font-size: 0.85em; /* کاهش سایز فونت کلی */
+}
+
+    /* هدر جمع و جور */
+    .inline-calendar .calendar-header {
+        padding: 10px 15px;
+        margin: -15px -15px 10px -15px; /* کاهش margin */
+        border-radius: 8px 8px 0 0;
+        background: linear-gradient(to right, var(--primary), var(--primary-light));
+    }
+
+    .inline-calendar .calendar-nav-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+        background: rgba(255, 255, 255, 0.25);
+    }
+
+    .inline-calendar .calendar-header select {
+        padding: 6px 10px;
+        font-size: 12px;
+        min-width: 85px;
+        font-weight: 500;
+        background: rgba(255, 255, 255, 0.95);
+        color: var(--primary);
+    }
+
+    /* جدول تقویم جمع و جور */
+    .inline-calendar .calendar-table {
+        border-spacing: 3px; /* کاهش فاصله */
+        margin: 0 0 10px 0;
+    }
+
+        .inline-calendar .calendar-table thead th {
+            padding: 8px 0;
+            font-size: 11px;
+            font-weight: 600;
+            background: color-mix(in srgb, var(--primary-soft) 90%, transparent);
+            color: var(--primary);
+        }
+
+        .inline-calendar .calendar-table tbody td {
+            padding: 8px 0;
+            font-size: 12px;
+            font-weight: 500;
+            border-radius: 6px;
+            color: var(--text-main);
+        }
+
+            .inline-calendar .calendar-table tbody td:not(.empty):hover {
+                transform: translateY(-1px);
+                box-shadow: 0 2px 8px color-mix(in srgb, var(--primary) 15%, transparent);
+                background: linear-gradient(135deg, var(--primary-soft) 0%, color-mix(in srgb, var(--primary-soft) 80%, white) 100%);
+                color: var(--primary);
+            }
+
+            .inline-calendar .calendar-table tbody td.selected {
+                box-shadow: 0 2px 10px color-mix(in srgb, var(--primary) 30%, transparent);
+                background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+                color: white;
+            }
+
+    /* فوتر جمع و جور */
+    .inline-calendar .calendar-footer {
+        margin-top: 5px;
+        padding-top: 10px;
+        border-top: 2px solid var(--border-soft);
+        gap: 8px;
+    }
+
+    .inline-calendar .calendar-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+        border-radius: 8px;
+        font-weight: 500;
+        min-height: 32px;
+    }
+
+/* حالت compact برای inline */
+.compact-date .inline-calendar {
+    padding: 12px;
+    min-width: 260px;
+    max-width: 300px;
+    border-radius: 8px;
+}
+
+    .compact-date .inline-calendar .calendar-header {
+        padding: 8px 12px;
+        margin: -12px -12px 8px -12px;
+    }
+
+    .compact-date .inline-calendar .calendar-nav-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+    }
+
+    .compact-date .inline-calendar .calendar-header select {
+        padding: 5px 8px;
+        font-size: 11px;
+        min-width: 75px;
+    }
+
+    .compact-date .inline-calendar .calendar-table {
+        border-spacing: 2px;
+        margin: 0 0 8px 0;
+    }
+
+        .compact-date .inline-calendar .calendar-table thead th {
+            padding: 6px 0;
+            font-size: 10px;
+        }
+
+        .compact-date .inline-calendar .calendar-table tbody td {
+            padding: 6px 0;
+            font-size: 11px;
+        }
+
+    .compact-date .inline-calendar .calendar-footer {
+        gap: 6px;
+    }
+
+    .compact-date .inline-calendar .calendar-btn {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+
+/* برای responsive شدن */
+@media (max-width: 768px) {
+    .inline-calendar-container {
+        position: fixed;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 90%;
+        max-width: 300px;
+        margin: 0;
+    }
+
+    .inline-calendar {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .compact-date .inline-calendar-container {
+        max-width: 280px;
+    }
+}
+
+/* حالت super-compact برای فیلترهای کوچک */
+.super-compact .inline-calendar {
+    padding: 10px;
+    min-width: 240px;
+    max-width: 280px;
+    border-radius: 6px;
+    font-size: 0.8em;
+}
+
+    .super-compact .inline-calendar .calendar-header {
+        padding: 6px 10px;
+        margin: -10px -10px 6px -10px;
+    }
+
+    .super-compact .inline-calendar .calendar-nav-btn {
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+    }
+
+    .super-compact .inline-calendar .calendar-header select {
+        padding: 4px 6px;
+        font-size: 10px;
+        min-width: 65px;
+    }
+
+    .super-compact .inline-calendar .calendar-table {
+        border-spacing: 1px;
+        margin: 0 0 6px 0;
+    }
+
+        .super-compact .inline-calendar .calendar-table thead th {
+            padding: 5px 0;
+            font-size: 9px;
+        }
+
+        .super-compact .inline-calendar .calendar-table tbody td {
+            padding: 5px 0;
+            font-size: 10px;
+            border-radius: 4px;
+        }
+
+    .super-compact .inline-calendar .calendar-footer {
+        gap: 4px;
+        margin-top: 3px;
+        padding-top: 8px;
+    }
+
+    .super-compact .inline-calendar .calendar-btn {
+        padding: 5px 8px;
+        font-size: 10px;
+        border-radius: 5px;
+        min-height: 28px;
+    }
+
+/* حالت popup هم جمع و جورتر */
+.popup-content.compact {
+    padding: 15px;
+    min-width: 280px;
+    max-width: 320px;
+    border-radius: 12px;
+}
+
+    .popup-content.compact .calendar-header {
+        padding: 10px 15px;
+        margin: -15px -15px 10px -15px;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .popup-content.compact .calendar-nav-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+    }
+
+    .popup-content.compact .calendar-header select {
+        padding: 6px 10px;
+        font-size: 12px;
+        min-width: 85px;
+    }
+
+    .popup-content.compact .calendar-table {
+        border-spacing: 3px;
+        margin: 0 0 10px 0;
+    }
+
+        .popup-content.compact .calendar-table thead th {
+            padding: 8px 0;
+            font-size: 11px;
+        }
+
+        .popup-content.compact .calendar-table tbody td {
+            padding: 8px 0;
+            font-size: 12px;
+        }
+
+    .popup-content.compact .calendar-footer {
+        margin-top: 5px;
+        padding-top: 10px;
+        gap: 8px;
+    }
+
+    .popup-content.compact .calendar-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+/* اضافه کردن این استایل‌ها */
+.persian-date-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.persian-date-input {
+    position: relative;
+    z-index: 10;
+}
+
+.calendar-icon {
+    position: absolute;
+    z-index: 11;
+}
+
+/* ==================== تم Metro (پیش‌فرض) ==================== */
+.theme-metro {
+    --primary: #8E44AD;
+    --primary-light: #9B59B6;
+    --primary-soft: #f3e8ff;
+    --today: #3498db;
+    --today-dark: #2980b9;
+    --success: #27ae60;
+    --success-light: #2ecc71;
+    --text-main: #333;
+    --text-muted: #999;
+    --border-light: #e0e0e0;
+    --border-soft: #f0f0f0;
+    --bg-main: #ffffff;
+    --bg-soft: #f9f9f9;
+}
+
+/* ==================== تم Classic ==================== */
+.theme-classic {
+    --primary: #2c3e50;
+    --primary-light: #34495e;
+    --primary-soft: #ecf0f1;
+    --today: #e74c3c;
+    --today-dark: #c0392b;
+    --success: #27ae60;
+    --success-light: #2ecc71;
+    --text-main: #2c3e50;
+    --text-muted: #7f8c8d;
+    --border-light: #bdc3c7;
+    --border-soft: #ecf0f1;
+    --bg-main: #ffffff;
+    --bg-soft: #f9f9f9;
+}
+
+/* ==================== تم Modern ==================== */
+.theme-modern {
+    --primary: #1abc9c;
+    --primary-light: #16a085;
+    --primary-soft: #d1f2eb;
+    --today: #3498db;
+    --today-dark: #2980b9;
+    --success: #27ae60;
+    --success-light: #2ecc71;
+    --text-main: #2c3e50;
+    --text-muted: #7f8c8d;
+    --border-light: #bdc3c7;
+    --border-soft: #ecf0f1;
+    --bg-main: #ffffff;
+    --bg-soft: #f9f9f9;
+}
+
+/* ==================== تم Dark ==================== */
+.theme-dark {
+    --primary: #34495e;
+    --primary-light: #2c3e50;
+    --primary-soft: #2c3e50;
+    --today: #3498db;
+    --today-dark: #2980b9;
+    --success: #27ae60;
+    --success-light: #2ecc71;
+    --text-main: #ecf0f1;
+    --text-muted: #bdc3c7;
+    --border-light: #34495e;
+    --border-soft: #2c3e50;
+    --bg-main: #34495e;
+    --bg-soft: #2c3e50;
+}
+
+/* ==================== تم Blue Ocean ==================== */
+.theme-blue {
+    --primary: #2980b9;
+    --primary-light: #3498db;
+    --primary-soft: #d6eaf8;
+    --today: #e74c3c;
+    --today-dark: #c0392b;
+    --success: #27ae60;
+    --success-light: #2ecc71;
+    --text-main: #2c3e50;
+    --text-muted: #7f8c8d;
+    --border-light: #aed6f1;
+    --border-soft: #ebf5fb;
+    --bg-main: #ffffff;
+    --bg-soft: #f8f9fa;
+}
+/* ==================== تم Coral Sunset (غروب مرجانی) ==================== */
+.theme-coral {
+    --primary: #FF6B6B;
+    --primary-light: #FF8E8E;
+    --primary-soft: #FFE8E8;
+    --today: #4ECDC4;
+    --today-dark: #3AAFA9;
+    --success: #1DD1A1;
+    --success-light: #3AE7B8;
+    --text-main: #2D3436;
+    --text-muted: #636E72;
+    --border-light: #FFC8C8;
+    --border-soft: #FFF0F0;
+    --bg-main: #FFFFFF;
+    --bg-soft: #FFF9F9;
+}
+
+/* ==================== تم Forest Green (جنگل سبز) ==================== */
+.theme-forest {
+    --primary: #2D6A4F;
+    --primary-light: #40916C;
+    --primary-soft: #D8F3DC;
+    --today: #E76F51;
+    --today-dark: #D65B3D;
+    --success: #52B788;
+    --success-light: #74C69D;
+    --text-main: #1B4332;
+    --text-muted: #5A7160;
+    --border-light: #B7E4C7;
+    --border-soft: #EDF7F0;
+    --bg-main: #FFFFFF;
+    --bg-soft: #F8FDF9;
+}
+
+/* ==================== تم Golden Amber (کهربا طلایی) ==================== */
+.theme-amber {
+    --primary: #F39C12;
+    --primary-light: #F8C471;
+    --primary-soft: #FEF9E7;
+    --today: #3498DB;
+    --today-dark: #2980B9;
+    --success: #27AE60;
+    --success-light: #58D68D;
+    --text-main: #5D4037;
+    --text-muted: #8D6E63;
+    --border-light: #FDEBD0;
+    --border-soft: #FEF5E7;
+    --bg-main: #FFFFFF;
+    --bg-soft: #FFFDF7;
+}
+
+/* ==================== تم Deep Ocean (اقیانوس عمیق) ==================== */
+.theme-deep-ocean {
+    --primary: #1A5276;
+    --primary-light: #2E86C1;
+    --primary-soft: #EAF2F8;
+    --today: #E74C3C;
+    --today-dark: #CB4335;
+    --success: #17A589;
+    --success-light: #48C9B0;
+    --text-main: #154360;
+    --text-muted: #5D6D7E;
+    --border-light: #D4E6F1;
+    --border-soft: #EBF5FB;
+    --bg-main: #FFFFFF;
+    --bg-soft: #F8FBFD;
+}
+
+/* ==================== تم Royal Purple (بنفش سلطنتی) ==================== */
+.theme-royal {
+    --primary: #5B2C6F;
+    --primary-light: #7D3C98;
+    --primary-soft: #F4ECF7;
+    --today: #1ABC9C;
+    --today-dark: #17A589;
+    --success: #28B463;
+    --success-light: #58D68D;
+    --text-main: #4A235A;
+    --text-muted: #7B7D7D;
+    --border-light: #E8DAEF;
+    --border-soft: #F4F0F6;
+    --bg-main: #FFFFFF;
+    --bg-soft: #FAF8FB;
+}
+
+/* ==================== تم Minimal Gray (خاکستری مینیمال) ==================== */
+.theme-minimal {
+    --primary: #5D6D7E;
+    --primary-light: #85929E;
+    --primary-soft: #F2F4F4;
+    --today: #E74C3C;
+    --today-dark: #CB4335;
+    --success: #27AE60;
+    --success-light: #58D68D;
+    --text-main: #2C3E50;
+    --text-muted: #7F8C8D;
+    --border-light: #D5D8DC;
+    --border-soft: #EAEDED;
+    --bg-main: #FFFFFF;
+    --bg-soft: #F8F9F9;
+}

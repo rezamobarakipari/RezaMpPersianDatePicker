@@ -1,8 +1,8 @@
 <Solution>
-  <Folder Name="/demo/">
-    <Project Path="Demo/RmpPersianDatePicker.Sample.csproj" />
+  <Folder Name="/Demo/">
+    <Project Path="Demo/RezaMpPersianDatePicker.Demo/RezaMpPersianDatePicker.Demo.csproj" Id="3eda0913-3109-4628-ad53-6222981547a9" />
   </Folder>
-  <Folder Name="/src/">
-    <Project Path="src/RezaMpPersianDatePicker.csproj" />
+  <Folder Name="/Src/">
+    <Project Path="src/RezaMpPersianDatePicker/RezaMpPersianDatePicker.csproj" Id="1264e781-ac84-4e1a-84bb-1feb8f86c0d7" />
   </Folder>
 </Solution>

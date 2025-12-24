@@ -1,0 +1,502 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@using System.Linq.Expressions
+@using System.Globalization
+@using Microsoft.JSInterop
+@using RezaMpPersianDatePicker.PersianDatePickerEnums
+@using System.Threading.Tasks
+@if (ShowSimple)
+{
+    <div class="persian-date-wrapper @ThemeClass @SizeClass">
+        @RenderCalendar()
+    </div>
+}
+else
+{
+    <div class="persian-date-wrapper @(_isOpen && !PopupMode ? "calendar-open" : "")" @ref="_containerRef">
+      <input class="persian-date-input"
+           placeholder="@Placeholder"
+           @bind-value=@DisplayValue"
+           @oninput="OnInput"
+           @onclick="ToggleCalendar" />
+
+        <span class="calendar-icon" @onclick="ToggleCalendar">
+            <i class="calendar-icon-inner">📅</i>
+        </span>
+
+        @if (_isOpen && !PopupMode)
+        {
+            <!-- حالت inline (بازشونده کنار) -->
+            <div class="inline-calendar-container" @ref="_calendarRef">
+                <div class="inline-calendar">
+                    @RenderCalendar()
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (_isOpen && PopupMode)
+    {
+        <!-- حالت پاپ‌آپ -->
+        <div class="popup-overlay" @onclick="Close">
+            <div class="popup-content" @onclick:stopPropagation>
+                @RenderCalendar()
+            </div>
+        </div>
+    }
+
+}
+
+@code {
+    [Parameter] public DatePickerTheme Theme { get; set; } = DatePickerTheme.Metro;
+    [Parameter] public DatePickerSize Size { get; set; } = DatePickerSize.Standard;
+    [Parameter] public Expression<Func<string>>? ValueExpression { get; set; }
+    [Parameter] public bool IsReadOnly { get; set; } = false;
+    [Parameter] public bool ShowSimple { get; set; } = true;
+    [Inject] private IJSRuntime? JSRuntime { get; set; }
+
+    protected string ThemeClass => $"theme-{Theme.ToString().ToLower()}";
+    protected string SizeClass => Size switch
+    {
+        DatePickerSize.Compact => "compact-date",
+        DatePickerSize.SuperCompact => "super-compact",
+        _ => ""
+    };
+
+    [Parameter] public bool PopupMode { get; set; } = true;
+    [Parameter] public string? Value { get; set; }
+    [Parameter] public EventCallback<string?> ValueChanged { get; set; }
+    [Parameter] public string Placeholder { get; set; } = "انتخاب تاریخ";
+
+    private bool _isOpen;
+    private int _year;
+    private int _month;
+    private int _day;
+    private string? DisplayValue { get; set; }
+   // private bool _valueInitialized;
+
+    private ElementReference _containerRef;
+    private ElementReference _calendarRef;
+    private DotNetObjectReference<RezaPersianDatePicker>? _dotNetRef;
+
+    // استفاده از System.Globalization.PersianCalendar
+    private readonly PersianCalendar _pc = new();
+    private readonly string[] _daysOfWeek = { "ش", "ی", "د", "س", "چ", "پ", "ج" };
+    private List<List<int>> _weeks = new();
+
+    protected override void OnInitialized()
+    {
+        ParseValue(Value);
+        Generate();
+        //_valueInitialized = true;
+    }
+    private async Task PositionInlineCalendar()
+    {
+        try
+        {
+            if (JSRuntime != null)
+            {
+                // کمی تاخیر برای رندر شدن کامل
+                await Task.Delay(10);
+                await JSRuntime.InvokeVoidAsync("positionCalendar", _containerRef, _calendarRef);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error positioning calendar: {ex.Message}");
+            // در صورت خطا، موقعیت پیش‌فرض
+            if (_calendarRef.Context != null)
+            {
+                // اعمال موقعیت ساده
+            }
+        }
+    }
+
+    private async Task ToggleCalendar()
+    {
+        if (!_isOpen)
+        {
+            _isOpen = true;
+            await InvokeAsync(StateHasChanged);
+
+            // کمی تاخیر برای position دادن
+            if (!PopupMode)
+            {
+                await Task.Delay(50);
+                await PositionInlineCalendar();
+            }
+        }
+        else
+        {
+            await Close();
+        }
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _dotNetRef = DotNetObjectReference.Create(this);
+
+            // اضافه کردن event listener برای کلیک خارج از تقویم
+            if (JSRuntime != null)
+            {
+                await JSRuntime.InvokeVoidAsync("addCalendarClickListener", _dotNetRef);
+            }
+        }
+
+        // موقعیت‌یابی تقویم inline
+        if (_isOpen && !PopupMode)
+        {
+            await PositionInlineCalendar();
+        }
+    }
+
+    public void Dispose()
+    {
+        _dotNetRef?.Dispose();
+    }
+
+    [JSInvokable]
+    public async Task HandleClickOutside()
+    {
+        if (_isOpen && !PopupMode)
+        {
+            await Close();
+        }
+    }
+
+    // باقی متدها مانند قبل...
+    private RenderFragment RenderCalendar() => builder =>
+    {
+        builder.OpenElement(0, "div");
+        builder.AddAttribute(1, "class", "calendar-wrapper");
+
+        // Header
+        builder.OpenElement(2, "div");
+        builder.AddAttribute(3, "class", "calendar-header");
+
+        // دکمه ماه قبل
+        builder.OpenElement(4, "button");
+        builder.AddAttribute(5, "class", "calendar-nav-btn");
+        builder.AddAttribute(6, "onclick", EventCallback.Factory.Create(this, PrevMonth));
+        builder.AddAttribute(7, "title", "ماه قبل");
+        builder.AddContent(8, "‹");
+        builder.CloseElement();
+
+        // انتخاب سال
+        builder.OpenElement(9, "select");
+        builder.AddAttribute(10, "value", _year);
+        builder.AddAttribute(11, "onchange", EventCallback.Factory.Create<Microsoft.AspNetCore.Components.ChangeEventArgs>(this, OnYearChanged));
+        builder.AddAttribute(12, "class", "calendar-select");
+
+        for (int y = 1300; y <= 1500; y++)
+        {
+            builder.OpenElement(13, "option");
+            builder.AddAttribute(14, "value", y);
+            if (y == _year) builder.AddAttribute(15, "selected", true);
+            builder.AddContent(16, y);
+            builder.CloseElement();
+        }
+        builder.CloseElement();
+
+        // انتخاب ماه
+        builder.OpenElement(17, "select");
+        builder.AddAttribute(18, "value", _month);
+        builder.AddAttribute(19, "onchange", EventCallback.Factory.Create<Microsoft.AspNetCore.Components.ChangeEventArgs>(this, OnMonthChanged));
+        builder.AddAttribute(20, "class", "calendar-select");
+
+        for (int m = 1; m <= 12; m++)
+        {
+            builder.OpenElement(21, "option");
+            builder.AddAttribute(22, "value", m);
+            if (m == _month) builder.AddAttribute(23, "selected", true);
+            builder.AddContent(24, GetMonthName(m));
+            builder.CloseElement();
+        }
+        builder.CloseElement();
+
+        // دکمه ماه بعد
+        builder.OpenElement(25, "button");
+        builder.AddAttribute(26, "class", "calendar-nav-btn");
+        builder.AddAttribute(27, "onclick", EventCallback.Factory.Create(this, NextMonth));
+        builder.AddAttribute(28, "title", "ماه بعد");
+        builder.AddContent(29, "›");
+        builder.CloseElement();
+
+        builder.CloseElement(); // بستن header
+
+        // جدول تقویم
+        builder.OpenElement(30, "table");
+        builder.AddAttribute(31, "class", "calendar-table");
+
+        // هدر روزهای هفته
+        builder.OpenElement(32, "thead");
+        builder.OpenElement(33, "tr");
+
+        foreach (var day in _daysOfWeek)
+        {
+            builder.OpenElement(34, "th");
+            builder.AddContent(35, day);
+            builder.CloseElement();
+        }
+
+        builder.CloseElement(); // tr
+        builder.CloseElement(); // thead
+
+        // بدنه تقویم
+        builder.OpenElement(36, "tbody");
+
+        foreach (var week in _weeks)
+        {
+            builder.OpenElement(37, "tr");
+
+            foreach (var day in week)
+            {
+                builder.OpenElement(38, "td");
+                builder.AddAttribute(39, "class", GetDayClass(day));
+                if (day > 0)
+                {
+                    builder.AddAttribute(40, "onclick", EventCallback.Factory.Create(this, () => SelectDay(day)));
+                    builder.AddAttribute(41, "title", $"انتخاب {day} {GetMonthName(_month)} {_year}");
+                }
+                builder.AddContent(42, day == 0 ? "" : day.ToString());
+                builder.CloseElement();
+            }
+
+            builder.CloseElement(); // tr
+        }
+
+        builder.CloseElement(); // tbody
+        builder.CloseElement(); // table
+
+        // Footer
+        builder.OpenElement(43, "div");
+        builder.AddAttribute(44, "class", "calendar-footer");
+
+        builder.OpenElement(45, "button");
+        builder.AddAttribute(46, "class", "calendar-btn today");
+        builder.AddAttribute(47, "onclick", EventCallback.Factory.Create(this, SetToday));
+        builder.AddContent(48, "امروز");
+        builder.CloseElement();
+
+        builder.OpenElement(49, "button");
+        builder.AddAttribute(50, "class", "calendar-btn cancel");
+        builder.AddAttribute(51, "onclick", EventCallback.Factory.Create(this, Close));
+        builder.AddContent(52, "انصراف");
+        builder.CloseElement();
+
+        builder.OpenElement(53, "button");
+        builder.AddAttribute(54, "class", "calendar-btn confirm");
+        builder.AddAttribute(55, "onclick", EventCallback.Factory.Create(this, Confirm));
+        builder.AddContent(56, "تایید");
+        builder.CloseElement();
+
+        builder.CloseElement(); // footer
+        builder.CloseElement(); // calendar-wrapper
+    };
+
+
+
+    private async Task Close()
+    {
+        _isOpen = false;
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private void ParseValue(string? value)
+    {
+        if (!string.IsNullOrWhiteSpace(value))
+        {
+            try
+            {
+                var parts = value.Split('/');
+                if (parts.Length == 3)
+                {
+                    _year = int.Parse(parts[0]);
+                    _month = int.Parse(parts[1]);
+                    _day = int.Parse(parts[2]);
+                    DisplayValue = value;
+                    return;
+                }
+            }
+            catch
+            {
+                // خطا در پارس کردن
+            }
+        }
+
+        var now = DateTime.Now;
+        _year = _pc.GetYear(now);
+        _month = _pc.GetMonth(now);
+        _day = _pc.GetDayOfMonth(now);
+        DisplayValue = $"{_year:0000}/{_month:00}/{_day:00}";
+    }
+
+    private void Generate()
+    {
+        _weeks.Clear();
+        var first = _pc.ToDateTime(_year, _month, 1, 0, 0, 0, 0);
+        var offset = ((int)first.DayOfWeek + 1) % 7;
+        var daysInMonth = _pc.GetDaysInMonth(_year, _month);
+
+        var week = new List<int>();
+        for (int i = 0; i < offset; i++) week.Add(0);
+
+        for (int d = 1; d <= daysInMonth; d++)
+        {
+            week.Add(d);
+            if (week.Count == 7)
+            {
+                _weeks.Add(week);
+                week = new();
+            }
+        }
+
+        if (week.Any())
+        {
+            while (week.Count < 7) week.Add(0);
+            _weeks.Add(week);
+        }
+    }
+
+    private async Task OnInput(Microsoft.AspNetCore.Components.ChangeEventArgs e)
+    {
+        var inputValue = e.Value?.ToString();
+        if (!string.IsNullOrWhiteSpace(inputValue))
+        {
+            ParseValue(inputValue);
+            await ValueChanged.InvokeAsync(inputValue);
+        }
+    }
+
+    private async Task SelectDay(int day)
+    {
+        if (day == 0) return;
+        _day = day;
+        DisplayValue = $"{_year:0000}/{_month:00}/{_day:00}";
+
+        await ValueChanged.InvokeAsync(DisplayValue);
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private async Task Confirm()
+    {
+        var result = $"{_year:0000}/{_month:00}/{_day:00}";
+
+        if (result != Value)
+        {
+            await ValueChanged.InvokeAsync(result);
+        }
+
+        await Close();
+    }
+
+    private void PrevMonth()
+    {
+        if (_month == 1)
+        {
+            _month = 12;
+            _year--;
+        }
+        else
+        {
+            _month--;
+        }
+
+        AdjustDayForNewMonth();
+        Generate();
+        StateHasChanged();
+    }
+
+    private void NextMonth()
+    {
+        if (_month == 12)
+        {
+            _month = 1;
+            _year++;
+        }
+        else
+        {
+            _month++;
+        }
+
+        AdjustDayForNewMonth();
+        Generate();
+        StateHasChanged();
+    }
+
+    private void AdjustDayForNewMonth()
+    {
+        var daysInMonth = _pc.GetDaysInMonth(_year, _month);
+        if (_day > daysInMonth)
+        {
+            _day = daysInMonth;
+        }
+    }
+
+    private async void OnYearChanged(Microsoft.AspNetCore.Components.ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int newYear))
+        {
+            _year = newYear;
+            AdjustDayForNewMonth();
+            Generate();
+            StateHasChanged();
+        }
+    }
+
+    private async void OnMonthChanged(Microsoft.AspNetCore.Components.ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int newMonth))
+        {
+            _month = newMonth;
+            AdjustDayForNewMonth();
+            Generate();
+            StateHasChanged();
+        }
+    }
+
+    private async Task SetToday()
+    {
+        var now = DateTime.Now;
+        _year = _pc.GetYear(now);
+        _month = _pc.GetMonth(now);
+        _day = _pc.GetDayOfMonth(now);
+        DisplayValue = $"{_year:0000}/{_month:00}/{_day:00}";
+
+        await ValueChanged.InvokeAsync(DisplayValue);
+        Generate();
+        StateHasChanged();
+    }
+
+    private string GetDayClass(int day)
+    {
+        if (day == 0) return "empty";
+
+        var now = DateTime.Now;
+        if (day == _pc.GetDayOfMonth(now) &&
+            _month == _pc.GetMonth(now) &&
+            _year == _pc.GetYear(now))
+        {
+            return day == _day ? "selected today" : "today";
+        }
+
+        return day == _day ? "selected" : "";
+    }
+
+    private string GetMonthName(int m) => m switch
+    {
+        1 => "فروردین",
+        2 => "اردیبهشت",
+        3 => "خرداد",
+        4 => "تیر",
+        5 => "مرداد",
+        6 => "شهریور",
+        7 => "مهر",
+        8 => "آبان",
+        9 => "آذر",
+        10 => "دی",
+        11 => "بهمن",
+        12 => "اسفند",
+        _ => ""
+    };
+}
