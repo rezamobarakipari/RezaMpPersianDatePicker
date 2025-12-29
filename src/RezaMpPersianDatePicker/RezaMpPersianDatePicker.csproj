@@ -2,12 +2,38 @@
 
  <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
+	 <RazorLangVersion>8.0</RazorLangVersion>
     <Nullable>enable</Nullable>
+	 <IsPackable>true</IsPackable>
     <ImplicitUsings>enable</ImplicitUsings>
+	 <PackageId>RezaMpPersianDatePicker</PackageId>
+	 <Version>1.0.8</Version>
+	 <Authors>Reza Mobaraki Pari</Authors>
+	 <Company>RezaMp</Company>
+	
+	 <Description>
+ A customizable Persian (Jalali) DatePicker component for Blazor with theme, size, and popup/inline support.
+	 </Description>
+
+	 <PackageTags>
+blazor;datepicker;persian;jalali;ui;component
+	 </PackageTags>
+
+	 <PackageProjectUrl>https://github.com/rezamobarakipari/RezaMpPersianDatePicker</PackageProjectUrl>
+	 <RepositoryUrl>https://github.com/rezamobarakipari/RezaMpPersianDatePicker</RepositoryUrl>
+	 <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	 <PackageIcon>RezaMpPersianDatePicker.png</PackageIcon>
   </PropertyGroup>
 
 	<ItemGroup>
 	  <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.22" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="RezaMpPersianDatePicker.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
 	</ItemGroup>
 
 

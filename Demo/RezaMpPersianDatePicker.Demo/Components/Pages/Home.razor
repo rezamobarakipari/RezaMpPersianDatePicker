@@ -5,8 +5,8 @@
 <div class="demo-container">
 
     <header class="demo-header">
-        <h2>Persian DatePicker Demo</h2>
-        <span>Reza Mobaraki Pari</span>
+        <h2>دموی انتخاب تاریخ فارسی</h2>
+        <span>رضا مبارکی پری</span>
     </header>
 
     <div class="demo-body">
@@ -64,7 +64,7 @@
                                        PopupMode="@PopupMode"
                                        Value="@SelectedDate"
                                        ShowSimple="ShowSimple"
-                                       
+                                       ValueChanged="@(v=>OnDateChanged(SelectedDate,v))"
                                        Placeholder="تاریخ را انتخاب کنید..."
                                        IsReadOnly="false" />
             </div>
@@ -74,7 +74,7 @@
 </div>
 
 @code {
-    private string? SelectedDate = "1403/01/01"; // مقدار پیش‌فرض برای تست
+    private string? SelectedDate = "1404/10/04"; // مقدار پیش‌فرض برای تست
 
     private DatePickerTheme CurrentTheme { get; set; } = DatePickerTheme.Metro;
     private DatePickerSize CurrentSize { get; set; } = DatePickerSize.Standard;

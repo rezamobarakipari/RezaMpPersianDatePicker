@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "mo2Avs183Rs=",
+  "dgSpecHash": "0t7TI+IEOj8=",
   "success": true,
   "projectFilePath": "F:\\MyProjects\\RezaMpPersianDatePicker\\Demo\\RezaMpPersianDatePicker.Demo\\RezaMpPersianDatePicker.Demo.csproj",
   "expectedPackageFiles": [
@@ -16,8 +16,17 @@
     "C:\\Users\\Reza.mobaraki\\.nuget\\packages\\microsoft.extensions.options\\8.0.2\\microsoft.extensions.options.8.0.2.nupkg.sha512",
     "C:\\Users\\Reza.mobaraki\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "C:\\Users\\Reza.mobaraki\\.nuget\\packages\\microsoft.jsinterop\\8.0.22\\microsoft.jsinterop.8.0.22.nupkg.sha512",
-    "C:\\Users\\Reza.mobaraki\\.nuget\\packages\\system.io.pipelines\\8.0.0\\system.io.pipelines.8.0.0.nupkg.sha512",
-    "C:\\Users\\Reza.mobaraki\\.nuget\\packages\\rezamppersiandatepicker\\1.0.0\\rezamppersiandatepicker.1.0.0.nupkg.sha512"
+    "C:\\Users\\Reza.mobaraki\\.nuget\\packages\\system.io.pipelines\\8.0.0\\system.io.pipelines.8.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json.",
+      "projectPath": "F:\\MyProjects\\RezaMpPersianDatePicker\\Demo\\RezaMpPersianDatePicker.Demo\\RezaMpPersianDatePicker.Demo.csproj",
+      "warningLevel": 1,
+      "filePath": "F:\\MyProjects\\RezaMpPersianDatePicker\\Demo\\RezaMpPersianDatePicker.Demo\\RezaMpPersianDatePicker.Demo.csproj",
+      "targetGraphs": []
+    }
+  ]
 }

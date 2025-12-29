@@ -1,5 +1,0 @@
-wwwroot\Css\calendarStyle.css
-wwwroot\exampleJsInterop.js
-wwwroot\Fonts\IRANSansWeb_Light.woff
-wwwroot\Fonts\IRANSansWeb_Light.woff2
-wwwroot\Js\calendar.js

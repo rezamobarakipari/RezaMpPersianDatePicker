@@ -23,3 +23,6 @@ F:\MyProjects\RezaMpPersianDatePicker\src\RezaMpPersianDatePicker\obj\Debug\net8
 F:\MyProjects\RezaMpPersianDatePicker\src\RezaMpPersianDatePicker\obj\Debug\net8.0\staticwebassets.build.json
 F:\MyProjects\RezaMpPersianDatePicker\src\RezaMpPersianDatePicker\obj\Debug\net8.0\staticwebassets.build.json
 F:\MyProjects\RezaMpPersianDatePicker\src\RezaMpPersianDatePicker\obj\Debug\net8.0\staticwebassets.build.json
+F:\MyProjects\RezaMpPersianDatePicker\src\RezaMpPersianDatePicker\obj\Debug\net8.0\staticwebassets.build.json
+F:\MyProjects\RezaMpPersianDatePicker\src\RezaMpPersianDatePicker\obj\Debug\net8.0\staticwebassets.build.json
+F:\MyProjects\RezaMpPersianDatePicker\src\RezaMpPersianDatePicker\obj\Debug\net8.0\staticwebassets.build.json

@@ -1,4 +1,16 @@
-﻿
+﻿@font-face {
+    font-family: 'iransans';
+    src: url('../Fonts/IRANSansWeb_Light.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'iransans';
+    src: url('../Fonts/IRANSansWeb_Light.woff') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
 /* ==================== Persian Date Picker – Base CSS ==================== */
 /* این فایل شامل 100٪ CSS اصلی شماست، فقط رنگ‌ها variable-based شده‌اند */
 

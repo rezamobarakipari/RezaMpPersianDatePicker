@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>RezaMpPersianDatePicker</id>
+    <version>1.0.7</version>
+    <authors>Reza Mobaraki Pari</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>https://github.com/rezamobarakipari/RezaMpPersianDatePicker</projectUrl>
+    <description>A customizable Persian (Jalali) DatePicker component for Blazor with theme, size, and popup/inline support.</description>
+    <tags>blazor datepicker persian jalali ui component</tags>
+    <repository type="git" url="https://github.com/rezamobarakipari/RezaMpPersianDatePicker" commit="a023fa66652d2791d2a8ac6eabf60fac40bee6bf" />
+    <dependencies>
+      <group targetFramework="net8.0">
+        <dependency id="Microsoft.AspNetCore.Components.Web" version="8.0.22" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <contentFiles>
+      <files include="any/net8.0/Properties/launchSettings.json" buildAction="Content" />
+    </contentFiles>
+  </metadata>
+  <files>
+    <file src="F:\MyProjects\RezaMpPersianDatePicker\src\RezaMpPersianDatePicker\bin\Release\net8.0\RezaMpPersianDatePicker.dll" target="lib\net8.0\RezaMpPersianDatePicker.dll" />
+    <file src="F:\MyProjects\RezaMpPersianDatePicker\src\RezaMpPersianDatePicker\Properties\launchSettings.json" target="content\Properties\launchSettings.json" />
+    <file src="F:\MyProjects\RezaMpPersianDatePicker\src\RezaMpPersianDatePicker\Properties\launchSettings.json" target="contentFiles\any\net8.0\Properties\launchSettings.json" />
+    <file src="F:\MyProjects\RezaMpPersianDatePicker\src\RezaMpPersianDatePicker\wwwroot\Css\calendarStyle.css" target="staticwebassets\Css\calendarStyle.css" />
+    <file src="F:\MyProjects\RezaMpPersianDatePicker\src\RezaMpPersianDatePicker\wwwroot\Fonts\IRANSansWeb_Light.woff" target="staticwebassets\Fonts\IRANSansWeb_Light.woff" />
+    <file src="F:\MyProjects\RezaMpPersianDatePicker\src\RezaMpPersianDatePicker\wwwroot\Fonts\IRANSansWeb_Light.woff2" target="staticwebassets\Fonts\IRANSansWeb_Light.woff2" />
+    <file src="F:\MyProjects\RezaMpPersianDatePicker\src\RezaMpPersianDatePicker\wwwroot\Js\calendar.js" target="staticwebassets\Js\calendar.js" />
+    <file src="F:\MyProjects\RezaMpPersianDatePicker\src\RezaMpPersianDatePicker\wwwroot\exampleJsInterop.js" target="staticwebassets\exampleJsInterop.js" />
+    <file src="F:\MyProjects\RezaMpPersianDatePicker\src\RezaMpPersianDatePicker\obj\Release\net8.0\staticwebassets\msbuild.RezaMpPersianDatePicker.Microsoft.AspNetCore.StaticWebAssetEndpoints.props" target="build\Microsoft.AspNetCore.StaticWebAssetEndpoints.props" />
+    <file src="F:\MyProjects\RezaMpPersianDatePicker\src\RezaMpPersianDatePicker\obj\Release\net8.0\staticwebassets\msbuild.RezaMpPersianDatePicker.Microsoft.AspNetCore.StaticWebAssets.props" target="build\Microsoft.AspNetCore.StaticWebAssets.props" />
+    <file src="F:\MyProjects\RezaMpPersianDatePicker\src\RezaMpPersianDatePicker\obj\Release\net8.0\staticwebassets\msbuild.build.RezaMpPersianDatePicker.props" target="build\RezaMpPersianDatePicker.props" />
+    <file src="F:\MyProjects\RezaMpPersianDatePicker\src\RezaMpPersianDatePicker\obj\Release\net8.0\staticwebassets\msbuild.buildMultiTargeting.RezaMpPersianDatePicker.props" target="buildMultiTargeting\RezaMpPersianDatePicker.props" />
+    <file src="F:\MyProjects\RezaMpPersianDatePicker\src\RezaMpPersianDatePicker\obj\Release\net8.0\staticwebassets\msbuild.buildTransitive.RezaMpPersianDatePicker.props" target="buildTransitive\RezaMpPersianDatePicker.props" />
+  </files>
+</package>
