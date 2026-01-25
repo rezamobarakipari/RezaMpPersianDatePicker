@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RezaMpPersianDatePicker.Demo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a023fa66652d2791d2a8ac6eabf60fac40bee6bf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+429970fbe346428c180ad1331ef7fb2ad5441c1d")]
 [assembly: System.Reflection.AssemblyProductAttribute("RezaMpPersianDatePicker.Demo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RezaMpPersianDatePicker.Demo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
